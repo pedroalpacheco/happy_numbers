@@ -1,18 +1,21 @@
+def sum_of_squares(number):
+    string = str(number)
+    digits = [int(char) ** 2 for char in string]
+    return sum(digits)
+
 def happy(number):
-    if number in(1,10 ,100):
-        string = str(number)
+    box = []
+    n = number
+    while n != 1 and n not in box:
+        box.append(n)
+        n = sum_of_squares(n)
+    return n == 1
 
-        total = 0
-        for char in string:
-            total += int(char)
 
-
-
-        return total == 1
-
-    return False
-
+assert sum_of_squares(130) == 10
 assert happy(1)
 assert happy(10)
 assert happy(100)
+assert happy(130)
+assert happy(97)
 assert not happy(4)
